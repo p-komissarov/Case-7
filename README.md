@@ -1,1 +1,2 @@
-# Case-7
+Данная программа получает на вход поисковый запрос пользователя, введенный в строку "Поиск" на сайте obuv-tut2000.ru. Она выводит полный список обуви, соответствующей запросу, а также следующие характеристики для каждого товара:артикул, наименование, вид обуви, сезон, цена, размеры, материал верха, цвет, страна производитель.
+This program receives the user's search query, which is entered in the "Search" line on the obuv-tut2000.ru website. It displays a complete list of shoes that match the query, as well as the following characteristics for each product: article number, name, type of shoe, season, price, size, upper material, color, and country of manufacture.

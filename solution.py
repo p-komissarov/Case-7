@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import time
-import ru_local2 as ru
+import ru_local as ru
 
 BASE_URL = "https://obuv-tut2000.ru"
 
@@ -95,11 +95,10 @@ def main(raw_request):
     """
     Processes the user's search query and displays the products with their characteristics.
     Args:
-    request(str): The user's search query.
+    raw_request(str): The user's search query.
 
     Returns:
     results.txt: A file with all the shoes obtained from the user's query and their characteristics.
-
     """
 
     request = raw_request.replace(" ", "+")
@@ -123,12 +122,10 @@ def main(raw_request):
     links = []
 
     for page in range(1, max_pages + 1):
-
         url = f"https://obuv-tut2000.ru/magazin/search?gr_smart_search={page}&search_text={request}&s[sort_by]=price%20asc"
-        response = requests.get(url)
-        html = response.text
-        soup = BeautifulSoup(html, "html.parser") # ПОДШАРИТЬ
-        page_links = [BASE_URL + div.find("a")["href"] for div in soup.find_all("div", class_="gr-product-name")] # ПОДШАРИТЬ
+        html = requests.get(url).text
+        soup = BeautifulSoup(html, "html.parser")
+        page_links = [BASE_URL + div.find("a")["href"] for div in soup.find_all(class_="gr-product-name")] # ПОДШАРИТЬ
         links.extend(page_links)
         time.sleep(0.5)
 
